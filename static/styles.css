@@ -1,0 +1,96 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 0;
+}
+
+#navBar{
+    
+    top: 0;
+    width: 100%;
+    margin-bottom: 1vw;
+    padding-bottom: 1vh;
+    background-color: black;
+}
+
+.navItems{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.navItems a{
+    margin-right: 1vw;
+    text-decoration: none;
+}
+
+.parentDiv{
+   
+    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, auto);
+    gap: 1vw;
+
+    
+    width: 90vw;
+  
+    
+    
+}
+
+/*add min height and width*/
+.testDiv{
+    
+    
+    
+    
+    /*min-width: 10vw;*/
+    min-height: 30vh;
+    background-color:antiquewhite;
+    
+    border: solid .07vw black;
+    border-radius: 15px;
+    box-shadow:0 5px 5px;
+    padding: 1vw;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: transform 0.3s ease;
+    /*transform: translateX(var(--offset)) translateZ(var(--depth)) scale(var(--scale));*/    
+
+
+}
+
+.testDiv:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+}
+
+/*3d
+.testDiv:nth-child(1){
+    transform: translateX(0px) translateZ(0px) scale(1);
+    z-index: 3;
+}
+
+.testDiv:nth-child(2){
+    transform: translateX(20px) translateZ(-50px) scale(0.95);
+    z-index: 2;
+    
+}
+
+.testDiv:nth-child(3){
+    transform: translateX(40px) translateZ(-100px) scale(0.90);
+    z-index: 1;
+    
+}
+*/
+p{
+
+}

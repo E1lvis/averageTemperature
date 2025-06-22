@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Index Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    
+</head>
+
+<body>
+<header id="navBar">
+<div class="navItems">
+    <a href="">test 1</a>
+    <a href="">test 2</a>
+</div>
+</header>
+<br>
+
+
+
+<!---this div is where the child divs will be 
+created dynamically and populated based on the date we receive-->
+<div class="parentDiv" id="mainContainer">
+
+<!--
+<div class="testDiv">
+    <p>Date</p>
+    <p>Average Temp Today</p>
+    <p>Average Temp Last Year</p>
+
+</div>
+<div class="testDiv">div 2</div>
+<div class="testDiv">div 3</div>
+-->
+</div>
+
+
+
+<script src="{{ url_for('static', filename='script.js') }}" ></script>
+</body>
+</html>
