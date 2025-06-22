@@ -50,7 +50,7 @@ body{
     
     /*min-width: 10vw;*/
     min-height: 30vh;
-    background-color:antiquewhite;
+    
     
     border: solid .07vw black;
     border-radius: 15px;
@@ -63,6 +63,7 @@ body{
     align-items: center;
     backface-visibility: hidden;
     transition: transform 0.3s ease;
+    background: linear-gradient(var(--gradient));
     /*transform: translateX(var(--offset)) translateZ(var(--depth)) scale(var(--scale));*/    
 
 

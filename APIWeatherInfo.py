@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from datetime import date, datetime
 from meteostat import Daily, Point
 
+'''flow of code: API call -> passing in the json[dataseries] into averageWeatherPerday -> createinformationDict'''
 
 
 lat = 34.92
@@ -37,6 +38,8 @@ def weatherAPICall(lat: float, long: float) -> json:
 #for specific use with the json returned from API call, passing in the dataseries list of dict from JSON
 def averageWeatherPerDay(dataset: list) -> dict:
     '''creates averages by parsing through the dataset passed through, genreally the weather api call'''
+    #example return = {'day 1': {'temp': '29.0', 'weather': 'pcloudynight'}, 'day 2': {'temp': '30.8', 'weather': 'pcloudynight'}
+
     averages = {
 
     }
@@ -53,10 +56,14 @@ def averageWeatherPerDay(dataset: list) -> dict:
         
         if hashTable.get('timepoint') % 24 == 0:
             # // doubke slash gets whole number
-            averages.update({'day ' + str(day): str((f'{averageTemp/8:.1f}'))})
+            averages.update({'day ' + str(day): {
+                'temp': str((f'{averageTemp/8:.1f}')),
+                'weather': hashTable.get('weather')
+                }
+                })
             averageTemp = 0
             day += 1
-
+  
     return averages
 
 #passing in the returned hashTable from average function
@@ -105,8 +112,9 @@ def createInformationDict(dataset: dict, lat: float, lon: float) -> dict:
         
         informationDict.update(
             {'Day ' + str(day): {
-                'currentAverage': dataset.get(data),
-                'offsetAverage': Daily(location, start, end).fetch()['tavg'][0]
+                'currentAverage': dataset.get(data).get('temp'),
+                'offsetAverage': Daily(location, start, end).fetch()['tavg'][0],
+                'weather': dataset.get(data).get('weather')
         }})
 
         day += 1
@@ -160,7 +168,7 @@ def dynamicReturn(lat: float, lon: float) -> dict:
     return informationDict
 
 
-#running code
+#testing code
 #dataToUse = weatherAPICall(34.92, -82.22)
 #print(weatherAPICall(lat,lon))
 #print(averageWeatherPerDay(dataToUse['dataseries']))
@@ -171,18 +179,10 @@ def dynamicReturn(lat: float, lon: float) -> dict:
 #createGraph(caseDataSet)
 #print(createInformationDict(caseDataSet, lat, lon))
 
-#below we have example of getting a current date tuple 
-'''create function to get tuple made'''
-#dateTest = makeDateTuple(lat, lon, 1)
-#currentDAte = date.
-#currentDAte = currentDAte.timetuple()[0]
-#currentDAte = currentDAte[:3]
-
-
 #full working retunr of data with avearge and offset, ***** may want to create a run func to make it easier to read 
 #print(createInformationDict(averageWeatherPerDay(weatherAPICall(lat, lon)['dataseries']), lat, lon))
 #print(staticReturn())
 
-testDataSet = {'Day 0': {'currentAverage': '23.5', 'offsetAverage': 24.6}, 'Day 1': {'currentAverage': '23.125', 'offsetAverage': 24.6}, 'Day 2': {'currentAverage': '24.625', 'offsetAverage': 24.6}, 'Day 3': {'currentAverage': '24.125','offsetAverage': 24.6}, 'Day 4': {'currentAverage': '26.25', 'offsetAverage': 24.6}, 'Day 5': {'currentAveragecurrentAverage': '26.25', 'offsetAve': '26.375', 'offsetAverage': 24.6}, 'Day 6': {'currentAverage': '26.75', 'offsetAverage': 24.6}, 'Day 7': {'currentAverage': '28.25', 'offsetAverage': 24.6}}
+#testDataSet = {'Day 0': {'currentAverage': '23.5', 'offsetAverage': 24.6}, 'Day 1': {'currentAverage': '23.125', 'offsetAverage': 24.6}, 'Day 2': {'currentAverage': '24.625', 'offsetAverage': 24.6}, 'Day 3': {'currentAverage': '24.125','offsetAverage': 24.6}, 'Day 4': {'currentAverage': '26.25', 'offsetAverage': 24.6}, 'Day 5': {'currentAveragecurrentAverage': '26.25', 'offsetAve': '26.375', 'offsetAverage': 24.6}, 'Day 6': {'currentAverage': '26.75', 'offsetAverage': 24.6}, 'Day 7': {'currentAverage': '28.25', 'offsetAverage': 24.6}}
 #print(testDataSet.get('Day 0').get('currentAverage'))
 

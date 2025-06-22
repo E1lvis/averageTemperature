@@ -8,34 +8,35 @@
 </head>
 
 <body>
-<header id="navBar">
-<div class="navItems">
-    <a href="">test 1</a>
-    <a href="">test 2</a>
-</div>
-</header>
-<br>
+    <header id="navBar">
+    <div class="navItems">
+        <a href="">test 1</a>
+        <a href="">test 2</a>
+    </div>
+    </header>
+    <br>
+    <h1>Daily Average Weather</h1>
+    <div id="location"></div>
+
+
+    <!---this div is where the child divs will be 
+    created dynamically and populated based on the date we receive-->
+    <div class="parentDiv" id="mainContainer">
+
+    <!--
+    <div class="testDiv">
+        <p>Date</p>
+        <p>Average Temp Today</p>
+        <p>Average Temp Last Year</p>
+
+    </div>
+    <div class="testDiv">div 2</div>
+    <div class="testDiv">div 3</div>
+    -->
+    </div>
 
 
 
-<!---this div is where the child divs will be 
-created dynamically and populated based on the date we receive-->
-<div class="parentDiv" id="mainContainer">
-
-<!--
-<div class="testDiv">
-    <p>Date</p>
-    <p>Average Temp Today</p>
-    <p>Average Temp Last Year</p>
-
-</div>
-<div class="testDiv">div 2</div>
-<div class="testDiv">div 3</div>
--->
-</div>
-
-
-
-<script src="{{ url_for('static', filename='script.js') }}" ></script>
+    <script src="{{ url_for('static', filename='script.js') }}" ></script>
 </body>
 </html>
