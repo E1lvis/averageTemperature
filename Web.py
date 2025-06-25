@@ -13,6 +13,11 @@ def home():
     
     return render_template('index.html')
 
+@app.route('/credits.html')
+def credits():
+
+    return render_template('credits.html')
+
 @app.route('/getInfo', methods=['POST'])
 def getInfo():
     passedInData = request.get_json()

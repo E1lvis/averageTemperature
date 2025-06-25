@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Index Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    
+</head>
+
+<body>
+    <header id="navBar">
+    <div class="navItems">
+        <a href="{{ url_for('home')}}">test 1</a>
+        <a href="{{ url_for('credits')}}">test 2</a>
+    </div>
+    </header>
+    <br>
+    <h1>Development Credits</h1>
+    <div id="creditContainer">
+        <div class="creditDiv">
+            <a href="https://www.7timer.info/doc.php#acknowledgement_and_disclaimer">7Timer!</a>
+            <p>Used for gathering current and forecast weather data</p>
+        </div>
+        <div class="creditDiv">
+            <a href="https://meteostat.net/en/">Meteostat</a>
+            <p>Used for gathering historical weather data</p>
+        </div>
+    </div>
+    <br>
+    <div>
+        <h2 style="text-align: center;">Disclaimer</h2>
+        <p>Website is not for commercial use, all information gathered using credits above.</p>
+
+    </div>
+
+
+    
+
+
+
+    
+</body>
+</html>

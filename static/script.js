@@ -1,7 +1,7 @@
 let currentDate = new Date();
 let weatherGradients = {
     'clearday': 'to bottom, #FD8112, #0085CA',
-    'clearnight': 'to bottom, #005C97, #363795',
+    'clearnight': 'to bottom, #363795, #FD8112',
     'pcloudyday': 'to bottom, #ECE9E6, #FFFFFF',
     'pcloudynight': 'to bottom, #ECE9E6, #FFFFFF',
     'mcloudyday': 'to bottom, #BDBBBE, #9D9EA3',
@@ -70,7 +70,10 @@ if(navigator.geolocation){
 
                 container.appendChild(div);
 
-                
+                setTimeout(()=>{
+                    div.classList.add('show')
+                    document.getElementById('loadingText').remove()
+            }, 10);
             });
             //inline version, can also just create h2, assign ineer, then append instead of inline
             document.getElementById('location').appendChild(
@@ -92,7 +95,7 @@ if(navigator.geolocation){
         .then(res => res.json())
         .then(info => {
           // in case of error we use static lat and lon
-            const container = document.getElementById('mainContainer');
+           const container = document.getElementById('mainContainer');
 
             Object.entries(info).forEach(([day, values], i) =>{
                 const div = document.createElement('div');
@@ -100,7 +103,6 @@ if(navigator.geolocation){
 
                 let weather = values.weather
                 div.style.setProperty('--gradient', `${weatherGradients[weather]}`);
-
                 //style, setting the variables inside the css file
                 //div.style.setProperty('--offset', `-${i*2}vw`);
                 //div.style.setProperty('--depth', `-${i*40}px`);
@@ -112,13 +114,16 @@ if(navigator.geolocation){
                 div.innerHTML = `<p>${currentDate.toDateString()}</p>
                                 <p>${weatherTypeReturn(values.weather)}</p>
                                 <p>Current Average Temperature</p>
-                                <p>${values.currentAverage}</p>
+                                <p>${values.currentAverage}<p>
                                 <p>Last Year Average Temperature</p>
                                 <p>${values.offsetAverage}</p>`;
 
                 container.appendChild(div);
 
-                
+                setTimeout(()=>{
+                    div.classList.add('show')
+                    document.getElementById('loadingText').remove()
+            }, 10);
             });
             document.getElementById('location').appendChild(
                 Object.assign(document.createElement('h2'), {innerHTML: 'Using Charlotte, NC'})

@@ -1,3 +1,9 @@
+:root {
+    --black: #2d3142;
+    --darkBlue: #4f5d75;
+    --grey: #bfc0c0;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -6,6 +12,15 @@ body{
     
     margin: 0;
 }
+a{
+    text-decoration: underline;
+    color: var(--grey);
+    transition: all 1s ease-in-out;
+}
+
+a:hover{
+    scale: 1.05;
+}
 
 #navBar{
     
@@ -13,7 +28,7 @@ body{
     width: 100%;
     margin-bottom: 1vw;
     padding-bottom: 1vh;
-    background-color: black;
+    background-color:var(--black)
 }
 
 .navItems{
@@ -62,14 +77,21 @@ body{
     justify-content: center;
     align-items: center;
     backface-visibility: hidden;
-    transition: transform 0.3s ease;
+    
     background: linear-gradient(var(--gradient));
     /*transform: translateX(var(--offset)) translateZ(var(--depth)) scale(var(--scale));*/    
 
-
+    /*going to make the divs fade in since they aren't automatic*/
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+    
 }
 
+.testDiv.show{
+    opacity: 1;
+}
 .testDiv:hover{
+   
     transform: scale(1.05);
     box-shadow: 0 10px 15px rgba(0,0,0,0.2);
 }
@@ -92,6 +114,26 @@ body{
     
 }
 */
-p{
+#creditContainer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 80vw;
+    
+}
 
+.creditDiv{
+    background-color: var(--darkBlue);
+    min-height: 30vh;
+    max-width: 30%;
+    
+    display: flex;
+    
+    flex-direction: column;
+
+    border: solid .07vw black;
+    border-radius: 15px;
+    box-shadow:0 5px 5px;
+    padding: 1%;
+    
 }
