@@ -44,36 +44,57 @@ if(navigator.geolocation){
         })
         .then(res => res.json())
         .then(info => {
-          
-            const container = document.getElementById('mainContainer');
+            //grab both table bodies
+            const container = document.getElementById('currentTableBody');
+            const pastContainer = document.getElementById('pastTableBody');
 
             Object.entries(info).forEach(([day, values], i) =>{
-                const div = document.createElement('div');
-                div.className = 'testDiv';
+                  //each loop will create a new tr for both bodies 
+                currentDate = new Date();
+                currentDate.setDate(currentDate.getDate() + i);
+
+                const tr = document.createElement('tr');
+                const pastTR = document.createElement('tr')
+                tr.className = 'tableRow';
+                pastTR.className = 'tableRow';
 
                 let weather = values.weather
-                div.style.setProperty('--gradient', `${weatherGradients[weather]}`);
-                //style, setting the variables inside the css file
-                //div.style.setProperty('--offset', `-${i*2}vw`);
-                //div.style.setProperty('--depth', `-${i*40}px`);
-                //div.style.setProperty('--scale', `${1-(i*0.05)}`);
+                //***** if we can set the gradient of the row do so */
+                //tr.style.setProperty('--gradient', `${weatherGradients[weather]}`);
+                //pastTR.style.setProperty('--gradient', `${weatherGradients[weather]}`);
+
+                let dateData = document.createElement('td');
+                dateData.textContent = currentDate.toDateString();
                 
-                currentDate = new Date()
-                currentDate.setDate(currentDate.getDate() + i) ;
+                
+                let firstData = document.createElement('td');
+                firstData.className = 'weatherText';
+                firstData.textContent = weatherTypeReturn(values.weather);
+                firstData.style.setProperty('--gradient', `${weatherGradients[values.weather]}`);
+                
+                let secondData = document.createElement('td');
+                secondData.className = 'infoText';
+                secondData.textContent = values.currentAverage;
+                
+                
+                
+                tr.appendChild(dateData);
+                tr.appendChild(firstData);
+                tr.appendChild(secondData);
+                
+                //**** rememnber the weather and data are wrong  */
+                dateData.textContent = currentDate.toDateString();
+                firstData.textContent = weatherTypeReturn(values.weather);
+                secondData.textContent = values.offsetAverage;
                 //adding content
-                div.innerHTML = `<p>${currentDate.toDateString()}</p>
-                                <p>${weatherTypeReturn(values.weather)}</p>
-                                <p>Current Average Temperature</p>
-                                <p>${values.currentAverage}<p>
-                                <p>Last Year Average Temperature</p>
-                                <p>${values.offsetAverage}</p>`;
 
-                container.appendChild(div);
+                pastTR.appendChild(dateData);
+                pastTR.appendChild(firstData);
+                pastTR.appendChild(secondData);
+                
+                container.appendChild(tr);
+                pastContainer.appendChild(pastTR);
 
-                setTimeout(()=>{
-                    div.classList.add('show')
-                    document.getElementById('loadingText').remove()
-            }, 10);
             });
             //inline version, can also just create h2, assign ineer, then append instead of inline
             document.getElementById('location').appendChild(
@@ -94,40 +115,74 @@ if(navigator.geolocation){
         })
         .then(res => res.json())
         .then(info => {
-          // in case of error we use static lat and lon
-           const container = document.getElementById('mainContainer');
+
+            //grab both table bodies
+            const container = document.getElementById('currentTableBody');
+            const pastContainer = document.getElementById('pastTableBody');
 
             Object.entries(info).forEach(([day, values], i) =>{
-                const div = document.createElement('div');
-                div.className = 'testDiv';
+               //each loop will create a new tr for both bodies 
+                currentDate = new Date();
+                currentDate.setDate(currentDate.getDate() + i);
+
+                const tr = document.createElement('tr');
+                const pastTR = document.createElement('tr')
+                tr.className = 'tableRow';
+                pastTR.className = 'tableRow';
 
                 let weather = values.weather
-                div.style.setProperty('--gradient', `${weatherGradients[weather]}`);
-                //style, setting the variables inside the css file
-                //div.style.setProperty('--offset', `-${i*2}vw`);
-                //div.style.setProperty('--depth', `-${i*40}px`);
-                //div.style.setProperty('--scale', `${1-(i*0.05)}`);
                 
-                currentDate = new Date()
-                currentDate.setDate(currentDate.getDate() + i) ;
+
+                let dateData = document.createElement('td');
+                dateData.textContent = currentDate.toDateString();
+                
+                
+                let firstData = document.createElement('td');
+                firstData.className = 'weatherText';
+                firstData.textContent = weatherTypeReturn(values.weather);
+                firstData.style.setProperty('--gradient', `${weatherGradients[values.weather]}`);
+                
+                let secondData = document.createElement('td');
+                secondData.className = 'infoText';
+                secondData.textContent = values.currentAverage;
+                
+                
+                
+                tr.appendChild(dateData);
+                tr.appendChild(firstData);
+                tr.appendChild(secondData);
+                container.appendChild(tr);
+                
+                //**** rememnber the weather and data are wrong  */
+                let pastDateData = document.createElement('td');
+                pastDateData.textContent = currentDate.toDateString();
+                
+                
+                let pastFirstData = document.createElement('td');
+                pastFirstData.className = 'infoText';
+                pastFirstData.textContent = values.currentAverage
+                
+                
+                let pastSecondData = document.createElement('td');
+                pastSecondData.className = 'infoText';
+                pastSecondData.textContent = values.offsetAverage;
+                
                 //adding content
-                div.innerHTML = `<p>${currentDate.toDateString()}</p>
-                                <p>${weatherTypeReturn(values.weather)}</p>
-                                <p>Current Average Temperature</p>
-                                <p>${values.currentAverage}<p>
-                                <p>Last Year Average Temperature</p>
-                                <p>${values.offsetAverage}</p>`;
 
-                container.appendChild(div);
+                pastTR.appendChild(pastDateData);
+                pastTR.appendChild(pastFirstData);
+                pastTR.appendChild(pastSecondData);
+                
+               
+                pastContainer.appendChild(pastTR);
 
-                setTimeout(()=>{
-                    div.classList.add('show')
-                    document.getElementById('loadingText').remove()
-            }, 10);
+                
             });
+            //inline version, can also just create h2, assign ineer, then append instead of inline
             document.getElementById('location').appendChild(
-                Object.assign(document.createElement('h2'), {innerHTML: 'Using Charlotte, NC'})
+                Object.assign(document.createElement('h2'), {innerHTML: 'Charlotte, NC'})
             );
+        
         });
         })
 } else {
@@ -139,8 +194,7 @@ function weatherTypeReturn(weather){
     let set2 = ['pcloudyday', 'pcloudynight', 'mcloudyday', 'mcloudynight', 'cloudyday', 'cloudynight']
     let set3 = ['lightrainday',  'lightrainnight', 'oshowerday', 'oshowernight', 'ishowerday', 'ishowernight', 'rainday', 'rainnight']
     let set4 = ['lightsnowday', 'lightsnownight', 'snowday', 'snownight', 'rainsnowday', 'rainsnownight']
-    console.log(weather)
-    console.log(weather in set1)
+    
     switch (true) {
         case (set1.includes(weather)):
             return 'Clear'

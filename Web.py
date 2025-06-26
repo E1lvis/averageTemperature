@@ -8,6 +8,7 @@ import APIWeatherInfo as APIWeatherInfo
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     
@@ -24,8 +25,10 @@ def getInfo():
     lat = passedInData.get('latitude')
     lon = passedInData.get('longitude')
     
-    info = APIWeatherInfo.dynamicReturn(lat, lon)
-
+    '''use line below for delpyoment'''
+    #info = APIWeatherInfo.dynamicReturn(lat, lon)
+    '''line below for testing'''
+    info = APIWeatherInfo.returnTestData()
     return jsonify(info)
 
 if __name__ == '__main__':

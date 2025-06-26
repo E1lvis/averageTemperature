@@ -4,6 +4,7 @@ import pandas
 import matplotlib.pyplot as plt
 from datetime import date, datetime
 from meteostat import Daily, Point
+import ast
 
 '''flow of code: API call -> passing in the json[dataseries] into averageWeatherPerday -> createinformationDict'''
 
@@ -168,6 +169,29 @@ def dynamicReturn(lat: float, lon: float) -> dict:
     return informationDict
 
 
+def generateTestData(): 
+    '''creating a base information dictionary to lower api calls in testing'''
+    dataseries = weatherAPICall(lat, lon)
+
+    averages = averageWeatherPerDay(dataseries['dataseries'])
+
+    informationDict = createInformationDict(averages, lat, lon)
+
+    file_path = 'testData.txt'
+
+    with open(file_path, 'w') as file:
+        json.dump(informationDict, file, indent=4)
+
+
+def returnTestData():
+    '''returns the dictionary stored in txt file for testing'''
+
+    with open('averageTemperature/testData.txt', 'r') as file:
+        dict_string = file.read()
+
+        testDict = ast.literal_eval(dict_string)
+
+    return testDict
 #testing code
 #dataToUse = weatherAPICall(34.92, -82.22)
 #print(weatherAPICall(lat,lon))

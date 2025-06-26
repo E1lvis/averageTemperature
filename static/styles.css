@@ -1,9 +1,9 @@
 :root {
     --black: #2d3142;
     --darkBlue: #4f5d75;
-    --grey: #bfc0c0;
+    --grey: 191, 192, 192;
+    --customBlue: #4F7896;
 }
-
 body{
     display: flex;
     flex-direction: column;
@@ -22,24 +22,37 @@ a:hover{
     scale: 1.05;
 }
 
+
 #navBar{
     
     top: 0;
     width: 100%;
     margin-bottom: 1vw;
     padding-bottom: 1vh;
-    background-color:var(--black)
+    background-color:var(--white);
+
+    
 }
+
+.logo{
+    height: 30px;
+    object-fit: contain;
+}
+
 
 .navItems{
     display: flex;
     flex-direction: row;
+    
 
 }
 
 .navItems a{
-    margin-right: 1vw;
+    padding-top: 1vh;
+    margin-right: 2vw;
     text-decoration: none;
+    color: black;
+    
 }
 
 .parentDiv{
@@ -96,6 +109,39 @@ a:hover{
     box-shadow: 0 10px 15px rgba(0,0,0,0.2);
 }
 
+.mainTable{
+    border: solid 1px rgba(var(--grey), 0.5);
+    border-radius: 15px;
+    
+    border-collapse: separate;
+    border-spacing: 0;   
+    width: 50vw;
+    overflow: hidden;
+    
+    
+}
+
+.tableRow{
+    
+}
+
+td{
+    border-bottom: solid 1px rgba(var(--grey), 0.5);
+    padding: 1vw;
+}
+
+.infoText{
+    color: var(--customBlue);
+    
+}
+
+.weatherText{
+    background-image: linear-gradient(var(--gradient));
+     background-clip: text; 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
 /*3d
 .testDiv:nth-child(1){
     transform: translateX(0px) translateZ(0px) scale(1);

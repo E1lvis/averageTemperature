@@ -1,0 +1,42 @@
+{
+    "Day 0": {
+        "currentAverage": "27.9",
+        "offsetAverage": 28.5,
+        "weather": "mcloudyday"
+    },
+    "Day 1": {
+        "currentAverage": "27.8",
+        "offsetAverage": 23.5,
+        "weather": "ishowerday"
+    },
+    "Day 2": {
+        "currentAverage": "27.6",
+        "offsetAverage": 27.1,
+        "weather": "ishowerday"
+    },
+    "Day 3": {
+        "currentAverage": "26.4",
+        "offsetAverage": 23.4,
+        "weather": "clearday"
+    },
+    "Day 4": {
+        "currentAverage": "27.2",
+        "offsetAverage": 25.8,
+        "weather": "ishowerday"
+    },
+    "Day 5": {
+        "currentAverage": "27.6",
+        "offsetAverage": 25.4,
+        "weather": "lightrainday"
+    },
+    "Day 6": {
+        "currentAverage": "27.1",
+        "offsetAverage": 26.5,
+        "weather": "lightrainday"
+    },
+    "Day 7": {
+        "currentAverage": "22.2",
+        "offsetAverage": 24.1,
+        "weather": "lightrainday"
+    }
+}

@@ -11,13 +11,13 @@
     <header id="navBar">
     <div class="navItems">
         <img id="cloudImage" src="{{url_for('static', filename='images/cloud.jpg')}}" class="logo">
-        
-        <a href="{{ url_for('home')}}">Daily Average Temp</a>
+        <a href="{{ url_for('home')}}">Home</a>
         <a href="{{ url_for('credits')}}">Credits</a>
     </div>
     </header>
     <br>
-   
+    <h1>place holder</h1>
+    <h2 id="loadingText">Loading...</h2>
     <div id="location"></div>
 
     <!--where we will building the table-->
@@ -27,8 +27,8 @@
             <thead>
                 <tr>
                     <td>Date</td>
-                    <td>Day's Weather</td>
-                    <td>Current Average</td>
+                    <td>Weather</td>
+                    <td>Average</td>
                 </tr>
             </thead>
             <tbody id="currentTableBody">
@@ -44,8 +44,8 @@
             <thead>
                 <tr>
                     <td>Date</td>
-                    <td>Current Average</td>
-                    <td>Past Year Average</td>
+                    <td>Weather</td>
+                    <td>Average</td>
                 </tr>
             </thead>
             <tbody id="pastTableBody">
